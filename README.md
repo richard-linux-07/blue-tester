@@ -21,11 +21,13 @@ cd bluetooth-tester-cross
 pip install -r requirements.txt
 python blue_tester.py
 
+---
+
 ## 📦 Requirements
 
 small_blue_diamond: Python 3.7+
 small_blue_diamond: bleak, colorama
-
+---
 ## ⚠️ Disclaimer
 
 This tool is intended **only for educational and ethical use on devices you own**.
@@ -42,3 +44,4 @@ Use it **responsibly and ethically**.💻🔐
 > 📍 Testing tools for educational purposes only
 
 ![Python](https://img.shields.io/badge/Language-Python-blue?style=flat&logo=python)
+---
