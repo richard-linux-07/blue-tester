@@ -1,30 +1,49 @@
-import subprocess
+import asyncio
+from bleak import BleakScanner, BleakClient
+from colorama import init, Fore
 
-def scan_devices():
-    print("[*] Scanning for Bluetooth devices...\n")
-    result = subprocess.run(["bluetoothctl", "scan", "on"], capture_output=True, text=True, timeout=10)
-    print(result.stdout)
+init(autoreset=True)
 
-def ping_device(mac):
-    print(f"[*] Sending L2CAP pings to {mac}")
-    try:
-        subprocess.run(["l2ping", "-c", "10", mac])
-    except Exception as e:
-        print("[!] Error:", e)
+def banner():
+    print(Fore.CYAN + r"""
+  ____  _             _   _____         _             
+ | __ )| |_   _  __ _| | |_   _|__  ___| |_ ___  _ __ 
+ |  _ \| | | | |/ _` | |   | |/ _ \/ __| __/ _ \| '__|
+ | |_) | | |_| | (_| | |   | |  __/\__ \ || (_) | |   
+ |____/|_|\__,_|\__,_|_|   |_|\___||___/\__\___/|_|   
 
-def main():
-    print("=== BlueTester ===")
+         Educational Bluetooth Test Tool
+""")
+
+async def scan_devices():
+    print(Fore.GREEN + "[*] Scanning for Bluetooth devices...\n")
+    devices = await BleakScanner.discover(timeout=5)
+    for idx, d in enumerate(devices):
+        print(f"{Fore.YELLOW}{idx + 1}. {d.name or 'Unknown'} - {d.address}")
+    return devices
+
+async def stress_connect(address):
+    print(Fore.CYAN + f"[*] Attempting multiple connections to {address}...\n")
+    for i in range(10):
+        try:
+            async with BleakClient(address) as client:
+                print(Fore.GREEN + f"[{i+1}] Connected: {client.is_connected}")
+        except Exception as e:
+            print(Fore.RED + f"[!] Failed to connect: {e}")
+
+async def main():
+    banner()
     print("1. Scan Devices")
-    print("2. Ping Device")
+    print("2. Stress Test Device")
     choice = input("Choose option: ")
 
     if choice == "1":
-        scan_devices()
+        await scan_devices()
     elif choice == "2":
-        mac = input("Enter MAC address: ")
-        ping_device(mac)
+        addr = input("Enter device MAC/UUID: ")
+        await stress_connect(addr)
     else:
-        print("Invalid option.")
+        print(Fore.RED + "Invalid option.")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
