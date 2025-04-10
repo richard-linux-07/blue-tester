@@ -60,15 +60,15 @@ async def stress_test(address, attempts):
             async with BleakClient(address) as client:
                 await asyncio.sleep(0.5)
                 if client.is_connected:
-                    print(Fore.GREEN + f"✔ Connected [{i+1}]")
-                    log_output(f"✔ Connected [{i+1}] to {address}")
+                    print(Fore.GREEN + f"+ Connected [{i+1}]")  # Changed ✔ to +
+                    log_output(f"+ Connected [{i+1}] to {address}")
         except Exception as e:
-            print(Fore.RED + f"✖ Failed [{i+1}] - {e}")
-            log_output(f"✖ Failed [{i+1}] - {e}")
+            print(Fore.RED + f"- Failed [{i+1}] - {e}")
+            log_output(f"- Failed [{i+1}] - {e}")
         await asyncio.sleep(0.5)
 
 def banner():
-    print(Fore.BLUE + Style.BRIGHT + """
+    print(Fore.BLUE + Style.BRIGHT + "
  
 ______ _              _____         _            
 | ___ \ |            |_   _|       | |           
@@ -80,7 +80,7 @@ ______ _              _____         _
                                                  
 
      💻 Educational Bluetooth Test Tool 💻
-    """)
+    ")
 
 async def main_menu():
     banner()
@@ -111,4 +111,3 @@ async def main_menu():
 
 if __name__ == "__main__":
     asyncio.run(main_menu())
-
