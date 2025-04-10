@@ -14,11 +14,12 @@ Test how your own devices handle multiple BLE connection attempts.
 ---
 
 ## 🚀 Usage
-
-git clone https://github.com/YOUR-USERNAME/bluetooth-tester-cross.git
-cd bluetooth-tester-cross
+```
+git clone https://github.com/richard-linux-07/blue-tester.git
+cd blue-tester
 pip install -r requirements.txt
 python blue_tester.py
+```
 
 ---
 
