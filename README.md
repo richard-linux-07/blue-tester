@@ -25,8 +25,8 @@ python blue_tester.py
 
 ## 📦 Requirements
 
-small_blue_diamond: Python 3.7+
-small_blue_diamond: bleak, colorama
+- 🔹 Python 3.7+
+- 🔸 bleak, colorama
 ---
 ## ⚠️ Disclaimer
 
