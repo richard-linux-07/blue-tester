@@ -68,8 +68,8 @@ async def stress_test(address, attempts):
         await asyncio.sleep(0.5)
 
 def banner():
-    print(Fore.BLUE + Style.BRIGHT + """
- 
+    print(Fore.LIGHTBLUE_EX + r"""
+    
 ______ _              _____         _            
 | ___ \ |            |_   _|       | |           
 | |_/ / |_   _  ___    | | ___  ___| |_ ___ _ __ 
