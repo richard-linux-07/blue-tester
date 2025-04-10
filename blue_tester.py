@@ -68,7 +68,7 @@ async def stress_test(address, attempts):
         await asyncio.sleep(0.5)
 
 def banner():
-    print(Fore.BLUE + Style.BRIGHT + "
+    print(Fore.BLUE + Style.BRIGHT + """
  
 ______ _              _____         _            
 | ___ \ |            |_   _|       | |           
@@ -80,7 +80,7 @@ ______ _              _____         _
                                                  
 
      💻 Educational Bluetooth Test Tool 💻
-    ")
+    """)
 
 async def main_menu():
     banner()
