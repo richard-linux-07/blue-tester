@@ -15,7 +15,6 @@ Test how your own devices handle multiple BLE connection attempts.
 
 ## 🚀 Usage
 
-```bash
 git clone https://github.com/YOUR-USERNAME/bluetooth-tester-cross.git
 cd bluetooth-tester-cross
 pip install -r requirements.txt
